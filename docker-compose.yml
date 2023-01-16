@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  postgres_user_api:
+    container_name: postgres
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    volumes: 
+      - db:/var/lib/postgres/data 
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: userApi 
+  user_api:
+    container_name: user_api
+    image: user-api:latest
+    restart: always
+    depends_on:
+      - postgres_user_api
+    ports:
+      - 8080:8080
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/userApi?schema=public"
+  postgres_news_api:
+    container_name: postgresNews
+    image: postgres:15
+    ports:
+      - "5433:5432"
+    volumes: 
+      - db_news:/var/lib/postgres/data 
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: newsApi
+  news_api:
+    container_name: news_api
+    image: news-api:latest
+    restart: always
+    depends_on:
+      - postgres_news_api
+    ports:
+      - 8081:8081
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgresNews:5432/newsApi?schema=public"
+  redis:
+    container_name: redis
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes: 
+      - redis:/data
+  news-manager:
+    container_name: news_manager
+    image: news-manager:latest
+    restart: always
+    depends_on:
+      - postgres_user_api
+      - user_api
+      - redis
+    ports:
+      - 8082:8082
+    environment:
+      REDIS_HOST: redis
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/userApi?schema=public"
+  news-client-email:
+    container_name: news_client_email
+    image: news-client-email:latest
+    restart: always
+    depends_on:
+      - news-manager
+    ports:
+      - 8083:8083
+    env_file:
+      - .env
+    environment:
+      REDIS_HOST: redis
+volumes:
+  db:
+  db_news:
+  redis:
