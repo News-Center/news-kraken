@@ -6,7 +6,7 @@
 
 # Setup
 **news-kraken** enables us to run the entire NewsCenter-Backend withhin a single dockerized application that runs with multiple docker containers. Before you can use kraken you have to do the following steps:
-* Clone all relevant repos from the [News-Center-Organisation](https://github.com/News-Center) organisation  into the **SAME DIRECTORY**.  As of now those are: 
+* Clone all relevant repos (with ssh, not https) from the [News-Center-Organisation](https://github.com/News-Center) organisation  into the **SAME DIRECTORY**.  As of now those are: 
 	* [user-api](https://github.com/News-Center/user-api)
 	*  [news-api](https://github.com/News-Center/news-api)
 	* [news-manager](https://github.com/News-Center/news-manager)
