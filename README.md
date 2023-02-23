@@ -14,7 +14,7 @@
   - [news-manager](https://github.com/News-Center/news-manager)
   - [news-client-email](https://github.com/News-Center/news-client-email)
   - [news-kraken](https://github.com/News-Center/news-kraken)
-- Setup the .env file for each repo (For a Quickstart copy the example from the .env.example file)
+- Setup the .env file for each repo (For a Quickstart copy the example from each .env.example file)
 - Enter the news-kraken directory
 - Create your own launch script. For this copy the `launch-example.bat` file and modify the `basePath`:
 
