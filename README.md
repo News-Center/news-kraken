@@ -9,7 +9,7 @@
 **news-kraken** enables us to run the entire NewsCenter-Backend withhin a single dockerized application that runs with
 multiple docker containers. Before you can use kraken you have to do the following steps:
 
-* Clone all relevant repos (with ssh, not https) from the [News-Center-Organisation](https://github.com/News-Center)
+* Clone all relevant repos (with ssh, not https) from the [News-Center-Organisation](https://github.com/News-Center) **MAKE SURE THEY ARE ALL IN THE SAME DIRECTORY**
   organisation into the **SAME DIRECTORY**. As of now those are:
     * [user-api](https://github.com/News-Center/user-api)
     * [news-api](https://github.com/News-Center/news-api)
@@ -21,35 +21,37 @@ multiple docker containers. Before you can use kraken you have to do the followi
     * To a obtain dummy smtp email handle you may use [ethereal](https://ethereal.email/messages)
 
 ```
-EMAIL_LOGIN = "TODO"
-EMAIL_PASSWORD = "TODO"
-EMAIL_HOST = "TODO"
+EMAIL_LOGIN = "<YOUR-SECRET>"
+EMAIL_PASSWORD = "<YOUR-SECRET>"
+EMAIL_HOST = "<YOUR-SECRET>"
 ...
 ```
 
-* Create your own launch script. For this copy the `launch-example.bat` file and modify the `basePath`:
+# Start the Services
 
+**Starting all services:**
+Using make:
 ```
-REM basePath anpassen!
-set "basePath=C:\PATH\TO\ALL\REPOS\"
-...
+make up
 ```
 
-* Now you can execute your launch file by simply clicking on it.
+Using docker compose:
+```docker
+docker compose up
+```
+
+**Starting Databases only:**
+Using make:
+```
+make db
+```
+
+Using docker compose:
+```docker
+docker compose up postgres_user_api postgres_news_api --build --force-recreate
+```
 
 **Please keep in mind:**
 
-* The script will try to pull the current code for each repo and then build the image. If you have merge conflicts in
-  any of them you need to resolve them first (if you want to run the backend in the newest version).
 * For looking at the logs of a particular container I recommend using Docker Desktop.
 * The Frontend is not included with this. The Frontend is a React-Application and its repo is hosted on Azure.
-
-# Manual Setup
-
-1. **Build Docker Images for each Repository**
-    * In the [user-api](https://github.com/News-Center/user-api) directory run `docker build -t user-api .`
-    * In the [news-api](https://github.com/News-Center/news-api) directory run `docker build -t news-api .`
-    * In the [news-manager](https://github.com/News-Center/news-manager) directory run `docker build -t news-manager .`
-    * In the [news-client-email](https://github.com/News-Center/news-client-email) directory
-      run `docker build -t news-client-email .`
-2. Run `docker compose up`
