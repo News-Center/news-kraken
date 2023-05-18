@@ -15,7 +15,7 @@ services:
       POSTGRES_DB: userApi 
   user_api:
     container_name: user_api
-    image: user-api:latest
+    build: ../user-api/.
     restart: always
     depends_on:
       - postgres_user_api
@@ -37,7 +37,7 @@ services:
       POSTGRES_DB: newsApi
   news_api:
     container_name: news_api
-    image: news-api:latest
+    build: ../news-api/.
     restart: always
     depends_on:
       - postgres_news_api
@@ -47,7 +47,7 @@ services:
       DATABASE_URL: "postgresql://postgres:postgres@postgresNews:5432/newsApi?schema=public"
   news-manager:
     container_name: news_manager
-    image: news-manager:latest
+    build: ../news-manager/.
     restart: always
     depends_on:
       - postgres_user_api
@@ -58,7 +58,7 @@ services:
       DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/userApi?schema=public"
   news-client-email:
     container_name: news_client_email
-    image: news-client-email:latest
+    build: ../news-client-email/.
     restart: always
     depends_on:
       - news-manager

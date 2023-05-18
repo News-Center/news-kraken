@@ -10,3 +10,6 @@ up: ## Run a local development environment with Docker Compose.
 
 down: ## Stop the Docker Compose local development environment.
 	@docker compose down --remove-orphans --volumes
+
+db: ## Start the User and News database.
+	@docker compose up postgres_user_api postgres_news_api --build --force-recreate	
