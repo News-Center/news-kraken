@@ -3,7 +3,7 @@ set "basePath=C:\PATH\TO\ALL\REPOS\"
 set "directories=user-api news-api news-client-email news-manager"
 
 @echo ===========================================================
-@echo "Pulling code & building images"
+@echo "Pulling code"
 
 for %%i in (%directories%) do (
     cd /d "%basePath%%%i"
@@ -14,7 +14,6 @@ for %%i in (%directories%) do (
 	@echo:
 	
 	git pull
-    docker build -t %%i% .
 )
 
 @echo:
@@ -23,6 +22,6 @@ for %%i in (%directories%) do (
 @echo:
 
 cd /d "%basePath%news-kraken"
-docker-compose up
+docker-compose up --build --force-recreate
 
 pause >nul

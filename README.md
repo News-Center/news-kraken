@@ -6,11 +6,13 @@
 
 # Setup
 
-**news-kraken** enables us to run the entire NewsCenter-Backend withhin a single dockerized application that runs with
+**news-kraken** enables us to run the entire NewsCenter-Backend within a single dockerized application that runs with
 multiple docker containers. Before you can use kraken you have to do the following steps:
 
-* Clone all relevant repos (with ssh, not https) from the [News-Center-Organisation](https://github.com/News-Center) **MAKE SURE THEY ARE ALL IN THE SAME DIRECTORY**
-  organisation into the **SAME DIRECTORY**. As of now those are:
+* Clone all relevant repos (with ssh, not https) from
+  the [News-Center-Organisation](https://github.com/News-Center). <br/>
+  **MAKE SURE YOU CLONE THEM ALL INTO THE SAME DIRECTORY**.<br/>
+  As of now those repos are:
     * [user-api](https://github.com/News-Center/user-api)
     * [news-api](https://github.com/News-Center/news-api)
     * [news-manager](https://github.com/News-Center/news-manager)
@@ -21,35 +23,69 @@ multiple docker containers. Before you can use kraken you have to do the followi
     * To a obtain dummy smtp email handle you may use [ethereal](https://ethereal.email/messages)
 
 ```
-EMAIL_LOGIN = "<YOUR-SECRET>"
-EMAIL_PASSWORD = "<YOUR-SECRET>"
-EMAIL_HOST = "<YOUR-SECRET>"
+EMAIL_LOGIN = "<YOUR-EMAIL>"
+EMAIL_PASSWORD = "<YOUR-PASSWORD>"
+EMAIL_HOST = "<YOUR-HOST>"
 ...
+
 ```
 
 # Start the Services
 
+There are three ways to start the services:
+
+1) Using your own `launch.bat` file (relevant for Frontend)
+2) Using `make`
+3) Using docker compose
+
+## 1) Launch.bat file
+
+Create your own launch script. For this copy the `launch-example.bat` file and modify the `basePath`:
+
+```
+REM basePath anpassen!
+set "basePath=C:\PATH\TO\ALL\REPOS\"
+...
+```
+
+Now you can execute your launch file by simply clicking on it. It will update and start all services for you.
+If you just wish to start everything but don't want to update the repos run `docker-compose up` manually.
+
+## 2) Make
+
 **Starting all services:**
 Using make:
+
 ```
 make up
 ```
 
-Using docker compose:
-```docker
-docker compose up
-```
+***Note:*** In order to run make commands you need to have `make` installed on your machine. If you are using Windows
+you can install
+the Linux Subsystem and run the make commands from there (run `ubuntu run` to enter a Linux terminal).
 
 **Starting Databases only:**
 Using make:
+
 ```
 make db
 ```
 
+## 3) Docker Compose
+
 Using docker compose:
+
+```docker
+docker compose up
+```
+
+Using docker compose:
+
 ```docker
 docker compose up postgres_user_api postgres_news_api --build --force-recreate
 ```
+
+# Note
 
 **Please keep in mind:**
 
