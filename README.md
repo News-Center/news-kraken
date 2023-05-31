@@ -26,6 +26,8 @@ multiple docker containers. Before you can use kraken you have to do the followi
 EMAIL_LOGIN = "<YOUR-EMAIL>"
 EMAIL_PASSWORD = "<YOUR-PASSWORD>"
 EMAIL_HOST = "<YOUR-HOST>"
+TELEGRAM_TOKEN = YOUR-TOKEN
+DISCORD_TOKEN = YOUR-TOKEN
 ...
 
 ```

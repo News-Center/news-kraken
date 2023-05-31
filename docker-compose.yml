@@ -66,6 +66,26 @@ services:
       - 9090:9090
     env_file:
       - .env
+  news-client-telegram:
+    container_name: news-client-telegram
+    build: ../news-client-telegram/.
+    restart: always
+    depends_on:
+      - news-manager
+    ports:
+      - 9092:9092
+    env_file:
+      - .env
+  news-client-discord:
+    container_name: news-client-discord
+    build: ../news-client-discord/.
+    restart: always
+    depends_on:
+      - news-manager
+    ports:
+      - 9091:9091
+    env_file:
+      - .env
 volumes:
   db:
   db_news:
