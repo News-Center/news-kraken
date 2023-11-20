@@ -48,6 +48,8 @@ services:
   news-manager:
     container_name: news_manager
     build: ../news-manager/.
+    env_file:
+      - .env
     restart: always
     depends_on:
       - postgres_user_api
