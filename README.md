@@ -4,6 +4,16 @@
 <img src="https://user-images.githubusercontent.com/45206898/212726740-33660894-1b48-48a9-b792-8b5491d8565c.png" width="455" height="455">
 </p>
 
+# Overall architecture
+
+News-Center is a news delivery system that enables students and other users to receive relevant messages over configurable 
+platforms like Discord.
+Here is a simplified view of the overall architecture:
+
+<p align="center">
+<img src="architecture.png" width="455" height="455">
+</p>
+
 # Setup
 
 **news-kraken** enables us to run the entire NewsCenter-Backend within a single dockerized application that runs with
