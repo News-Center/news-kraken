@@ -11,7 +11,7 @@ platforms like Discord.
 Here is a simplified view of the overall architecture:
 
 <p align="center">
-<img src="architecture.png" width="455" height="455">
+<img src="architecture.png" width="700">
 </p>
 
 # Setup
