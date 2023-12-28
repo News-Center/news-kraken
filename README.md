@@ -13,6 +13,19 @@ News-Center serves as a proficient news delivery system, catering to the needs o
 <img src="architecture.png" width="700">
 </p>
 
+Each service comes with his own Swagger documentation. 
+To access the Swagger documentation for each node API, refer to the respective endpoint:
+
+```
+http://<SERVICE_IP>:<PORT>/docs/static/index.html#/
+```
+
+
+For instance, when running the user-api locally, the Swagger documentation can be viewed at:
+```
+http://localhost:8080/docs/static/index.html#/
+```
+
 # Relevancy detection
 
 How do we detect if a message is relevant? 
