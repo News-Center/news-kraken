@@ -54,7 +54,7 @@ DISCORD_TOKEN = YOUR-TOKEN
 
 # Start the Services
 
-There are three ways to start the services:
+There are three ways to start the services (with all of them making suitable for prod and dev):
 
 1) Using your own `launch.bat` file (relevant for Frontend)
 2) Using `make`
