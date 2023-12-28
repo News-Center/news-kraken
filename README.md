@@ -6,13 +6,23 @@
 
 # Overall architecture
 
-News-Center is a news delivery system that enables students and other users to receive relevant messages over configurable 
-platforms like Discord.
-Here is a simplified view of the overall architecture:
+
+News-Center serves as a proficient news delivery system, catering to the needs of students and other users by providing them with pertinent messages across configurable platforms such as Discord. To offer a clearer understanding of the overall architecture, a simplified view is depicted below:
 
 <p align="center">
 <img src="architecture.png" width="700">
 </p>
+
+# Relevancy detection
+
+How do we detect if a message is relevant? 
+The mechanism employed to determine the relevance of a message involves a multi-phase algorithm centered around the message's tags. Subsequently, the liked messages of users are taken into consideration before the messages are delivered.
+
+<p align="center">
+<img src="tagrecognition-Tag_Erkennung_Workflow.png" width="700">
+</p>
+
+Users have the flexibility to subscribe to phases 1 through 7, enabling them to control which phases are applied. In the user interface, these phases are commonly referred to as "Matching-Algorithms." This customization empowers users to tailor their experience based on their preferences and desired level of relevance.
 
 # Setup
 
