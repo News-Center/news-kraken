@@ -19,7 +19,7 @@ How do we detect if a message is relevant?
 The mechanism employed to determine the relevance of a message involves a multi-phase algorithm centered around the message's tags. Subsequently, the liked messages of users are taken into consideration before the messages are delivered.
 
 <p align="center">
-<img src="tagrecognition-Tag_Erkennung_Workflow.png" width="700">
+<img src="tagrecognition-Tag_Erkennung_Workflow.svg" width="700">
 </p>
 
 Users have the flexibility to subscribe to phases 1 through 7, enabling them to control which phases are applied. In the user interface, these phases are commonly referred to as "Matching-Algorithms." This customization empowers users to tailor their experience based on their preferences and desired level of relevance.
